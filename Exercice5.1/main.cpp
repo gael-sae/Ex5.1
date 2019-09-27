@@ -21,10 +21,8 @@ int main() {
 	GameState gameState = GameState::INIT;
 
 	int mysteryNumber;
-	int mystery;
 
-	while (gameState != GameState::EXIT);
-	{
+	do { {
 		switch (gameState) {
 		case GameState::INIT: {
 			/*
@@ -33,8 +31,7 @@ int main() {
 
 			GenerateMysteryNumber(mysteryNumber);
 
-			/*gameState = GameState::PLAY;*/
-			gameState = GameState::EXIT;
+			gameState = GameState::PLAY;
 		}
 		case GameState::PLAY: {
 			/*
@@ -43,16 +40,41 @@ int main() {
 				- Si le nombre mystre est trouvé il faut passer à l'état END
 			*/
 
+			int number;
+			std::cout << "Found the mystery number.";
 
-			break;
+			bool founded = false;
+			int nbInput = 0;
+
+			while (!founded) {
+
+			std::cin >> number;
+			
+			if (number == mysteryNumber) {
+					std::cout << "You found the mystery number !";
+					founded = true;
+					gameState = GameState::END;
+				}
+
+				else if (number < mysteryNumber) {
+					std::cout << "plus grand\n";
+				}
+				else {
+					std::cout << "plus petit\n";
+				}
+
+				nbInput++;
+			}
+
 		}
 		case GameState::END: {
 			/*
 				Cette partie doit afficher le nombre de coups qui ont été nécessaire pour trouver le nombre mystère et indiquer quel est ce nombre mystère
 			*/
 
+			/*std::cout << "The player as use " << nbInput << "input";*/
 
-
+			/*gameState = GameState::EXIT;*/
 			break;
 		}
 		case GameState::EXIT: {
@@ -60,7 +82,8 @@ int main() {
 		}
 		}
 	}
-	
+	} while (gameState != GameState::EXIT);
+
 	std::cout << mysteryNumber;
 	
 	system("pause");
