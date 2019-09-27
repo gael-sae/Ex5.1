@@ -27,21 +27,13 @@ int main() {
 	do { {
 		switch (gameState) {
 		case GameState::INIT: {
-			/*
-				Cette partie doit donner une valeur à mysterNumber comprise entre 0 et 100
-			*/
 
 			GenerateMysteryNumber(mysteryNumber);
 
 			gameState = GameState::PLAY;
 		}
 		case GameState::PLAY: {
-			/*
-				Cette partie doit:
-				- essayer de deviner le nombre mystère à l'aide d'un function
-				- Si le nombre mystre est trouvé il faut passer à l'état END
-			*/
-
+			
 			int number;
 			std::cout << "Found the mystery number.\n";
 
@@ -69,9 +61,7 @@ int main() {
 
 		}
 		case GameState::END: {
-			/*
-				Cette partie doit afficher le nombre de coups qui ont été nécessaire pour trouver le nombre mystère et indiquer quel est ce nombre mystère
-			*/
+			
 			std::cout << "\n";
 			std::cout << "You found the mystery number " << mysteryNumber << ".\n";
 			std::cout << "The player as use " << nbInput << " hits.\n";
